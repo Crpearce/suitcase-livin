@@ -1,13 +1,14 @@
-import { Container, Navbar, Nav } from 'react-bootstrap'
+import { Container, Navbar, Nav, Image } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
+import logo from '../../assets/logo.png'
 
 const Header = () => {
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect className='testing-nav'>
         <Container>
           <LinkContainer to='/'>
-            <Navbar.Brand>Suitcase Livin'</Navbar.Brand>
+            <Image src={logo}/>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
