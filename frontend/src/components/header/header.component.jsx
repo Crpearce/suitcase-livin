@@ -1,30 +1,22 @@
-import {Container, Navbar, Nav, NavDropdown } from 'react-bootstrap'
-
+import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap'
 
 const Header = () => {
   return (
     <header>
-      <Navbar bg='light' expand='lg'>
+      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
         <Container>
-          <Navbar.Brand href='#home'>Suitcase Livin'</Navbar.Brand>
+          <Navbar.Brand href='/'>Suitcase Livin'</Navbar.Brand>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
-            <Nav className='me-auto'>
-              <Nav.Link href='#home'>HOME</Nav.Link>
-              <Nav.Link href='#link'>SHOP</Nav.Link>
-              <NavDropdown title='MORE' id='basic-nav-dropdown'>
-                <NavDropdown.Item href='#action/3.1'>About the Brand</NavDropdown.Item>
-                <NavDropdown.Item href='#action/3.2'>
-                  Founder
+            <Nav className='ms-auto'>
+              <Nav.Link href='/cart'><i className='fas fa-shopping-cart'></i>CART</Nav.Link>
+              <Nav.Link href='/login'><i className='fas fa-user'></i>SIGN IN</Nav.Link>
+              {/* <NavDropdown title='MORE' id='basic-nav-dropdown'>
+                <NavDropdown.Item href='/about'>
+                  About the Brand
                 </NavDropdown.Item>
-                {/* <NavDropdown.Item href='#action/3.3'>
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href='#action/3.4'>
-                  Separated link
-                </NavDropdown.Item> */}
-              </NavDropdown>
+                <NavDropdown.Item href='/founder'>Founder</NavDropdown.Item>
+              </NavDropdown> */}
             </Nav>
           </Navbar.Collapse>
         </Container>
