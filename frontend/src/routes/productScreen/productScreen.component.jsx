@@ -12,7 +12,7 @@ import {
 import Rating from '../../components/rating/rating.component'
 import axios from 'axios'
 
-const ProductScreen = ({}) => {
+const ProductScreen = () => {
   const [product, setProduct] = useState({})
   const params = useParams()
 
