@@ -1,0 +1,43 @@
+$primary: #202c39;
+$secondary: #283845;
+$success: #B8B08D;
+$info: #F2D492;
+$warning: #b8c924;
+$danger: #d62518;
+$light: #f8f9fa;
+$dark: #202c39;
+
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
+);
+
+main {
+  min-height: 80vh;
+}
+
+h3 {
+  padding: 1rem 0; 
+}
+
+.rating span {
+  margin: .1rem;
+}
+
+i {
+  color: #B8B08D;
+  font-size: 1rem
+}
+
+#nav-link {
+  color: #B8B08D;
+}
+
+@import '~bootstrap/scss/bootstrap.scss';
+

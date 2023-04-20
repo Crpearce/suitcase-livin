@@ -6,6 +6,7 @@ import {
   ListGroup,
   Card,
   ListGroupItem,
+  Button,
 } from 'react-bootstrap'
 import Rating from '../../components/rating/rating.component'
 import products from '../../products'
@@ -33,13 +34,40 @@ const ProductScreen = ({ match }) => {
                 text={`${product.numReviews} reviews`}
               />
             </ListGroupItem>
-            <ListGroupItem>
-              Price: ${product.price}
-            </ListGroupItem>
-            <ListGroupItem>
-              Description: ${product.description}
-            </ListGroupItem>
+            <ListGroupItem>Price: ${product.price}</ListGroupItem>
+            <ListGroupItem>Description: ${product.description}</ListGroupItem>
           </ListGroup>
+        </Col>
+        <Col md={3}>
+          <Card>
+            <ListGroup variant='flush'>
+              <ListGroupItem>
+                <Row>
+                  <Col>Price</Col>
+                  <Col>
+                    <strong>${product.price}</strong>
+                  </Col>
+                </Row>
+              </ListGroupItem>
+              <ListGroupItem>
+                <Row>
+                  <Col>Status</Col>
+                  <Col>
+                    {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                  </Col>
+                </Row>
+              </ListGroupItem>
+              <ListGroupItem>
+                <Button
+                  className='btn-block'
+                  type='button'
+                  disabled={product.countInStock === 0}
+                >
+                  ADD TO CART
+                </Button>
+              </ListGroupItem>
+            </ListGroup>
+          </Card>
         </Col>
       </Row>
     </>
