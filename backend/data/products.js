@@ -1,7 +1,7 @@
 const products = [
   {
     name: 'White Logo Beanie',
-    image: '/images/beanie.jpg',
+    image: '/images/beanie.webp',
     description:
       'Comfortable Beanie with a Suitcase Livin script. This beanie will keep your head and ears warm an any climate that comes your way on the road you are on in your life!',
     category: 'hats',
@@ -14,7 +14,7 @@ const products = [
   },
   {
     name: 'Big Foot Rope Hat',
-    image: '/images/hat.jpg',
+    image: '/images/hat.webp',
     description: `Protect that messy travel hair with a Suitcase Livin' Adjustable Snapback Big Foot Patch Rope Hat`,
     category: 'hats',
     price: 30,
@@ -30,7 +30,7 @@ const products = [
   },
   {
     name: `Black Camo Chilly Livin Hoodie`,
-    image: '/images/camo.jpg',
+    image: '/images/camo.webp',
     description:
       'Chilly Livin Hoodie is a heavy hoodie that keeps you warm in any weather. Makes Livin all warm and fuzzy and is perfect for your suitcase.',
     category: 'hoodies',
@@ -47,7 +47,7 @@ const products = [
   },
   {
     name: 'Blackout Crazy Dreamer T-Shirt',
-    image: '/images/tshirtBlack.jpg',
+    image: '/images/tshirtBlack.webp',
     description: `Dreams are much like Big Foot. People who believe in Big Foot are labeled as crazy but your belief has to be stronger than the noise in the pursuit of the unimaginable.`,
     category: 'tshirts',
     price: 30.0,
@@ -63,7 +63,7 @@ const products = [
   },
   {
     name: 'Sage Story T-Shirt',
-    image: '/images/tshirtSage.jpg',
+    image: '/images/tshirtSage.webp',
     description: `The Script T-Shirt represents writing your own story. Being able to acknowledge the road you've been through and the upcoming experiences. Being able to pack your suitcase full of the memories, accomplishments, sacrifices, obstacles, and friends you've made over the course of your journey. `,
     category: 'tshirts',
     price: 30,
