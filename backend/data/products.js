@@ -7,9 +7,7 @@ const products = [
     category: 'hats',
     price: 30.0,
     countInStock: {
-      honeyMustard: 3,
-      maroon: 4,
-      black: 0,
+      M: 7
     },
     rating: 4.5,
     numReviews: 2,
@@ -25,6 +23,7 @@ const products = [
       M: 5,
       L: 7,
       XL: 2,
+      XXL: 1
     },
     rating: 4.0,
     numReviews: 1,
@@ -41,6 +40,7 @@ const products = [
       M: 1,
       L: 2,
       XL: 3,
+      XXL: 1
     },
     rating: 0,
     numReviews: 0,
@@ -56,6 +56,7 @@ const products = [
       M: 5,
       L: 7,
       XL: 2,
+      XXL: 1
     },
     rating: 5,
     numReviews: 12,
@@ -71,6 +72,7 @@ const products = [
       M: 5,
       L: 7,
       XL: 2,
+      XXL: 1
     },
     rating: 5,
     numReviews: 10,
