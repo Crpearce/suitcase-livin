@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
 import Product from '../../components/product/product.component'
 import { listProducts } from '../../actions/productActions'
+import Message from '../../components/message/message.component'
+import Loader from '../../components/loader/loader.component'
 
-const Home = () => {
+const HomeScreen = () => {
   const dispatch = useDispatch()
   // productList should be the same name as it is listed in your store
   const productList = useSelector((state) => state.productList)
@@ -26,9 +28,9 @@ const Home = () => {
     <>
       <h1>latest Products</h1>
       {loading ? (
-        <h2>Loading...</h2>
+        <Loader />
       ) : error ? (
-        <h3>{error}</h3>
+        <Message variant='danger'>{error}</Message>
       ) : (
         <Row>
           {products.map((product) => (
@@ -42,4 +44,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomeScreen
