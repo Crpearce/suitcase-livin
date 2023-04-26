@@ -26,7 +26,7 @@ const ProductScreen = () => {
   useEffect(() => {
     dispatch(listProductDetails(params.id))
   }, [dispatch, params])
-console.log(product)
+
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>
@@ -67,14 +67,22 @@ console.log(product)
                     </Col>
                   </Row>
                 </ListGroupItem>
-                <ListGroupItem>
+                                <ListGroupItem>
+                  <Row>
+                    <Col>Size</Col>
+                    <Col>
+                      {product.countInStockS}
+                    </Col>
+                  </Row>
+                </ListGroupItem>
+                {/* <ListGroupItem>
                   <Row>
                     <Col>Status</Col>
                     <Col>
                       {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
                     </Col>
                   </Row>
-                </ListGroupItem>
+                </ListGroupItem> */}
                 {/* {product.countInStock > 0 && (
                   <ListGroupItem>
                     <Row>

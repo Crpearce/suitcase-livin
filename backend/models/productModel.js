@@ -11,18 +11,18 @@ const reviewSchema = mongoose.Schema(
   }
 )
 
-const inventorySchema = mongoose.Schema(
-  {
-    S: { type: Number},
-    M: { type: Number},
-    L: { type: Number },
-    XL: { type: Number},
-    XXL: { type: Number},
-  },
-  {
-    timestamps: true,
-  }
-)
+// const inventorySchema = mongoose.Schema(
+//   {
+//     S: { type: String},
+//     M: { type: String},
+//     L: { type: String },
+//     XL: { type: String},
+//     XXL: { type: String},
+//   },
+//   {
+//     timestamps: true,
+//   }
+// )
 
 const productSchema = mongoose.Schema(
   {
@@ -63,7 +63,11 @@ const productSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
-    countInStock: [inventorySchema],
+    countInStockS: {type: Number},
+    countInStockM: {type: Number},
+    countInStockL: {type: Number},
+    countInStockXl: {type: Number},
+    countInStockXxl: {type: Number},
   },
   {
     timestamps: true,
