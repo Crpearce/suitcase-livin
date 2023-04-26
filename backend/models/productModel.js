@@ -13,11 +13,11 @@ const reviewSchema = mongoose.Schema(
 
 const inventorySchema = mongoose.Schema(
   {
-    S: { type: Number, required: true, default: 0 },
-    M: { type: Number, required: true, default: 0 },
-    L: { type: Number, required: true, default: 0 },
-    XL: { type: Number, required: true, default: 0 },
-    XXL: { type: Number, required: true, default: 0 },
+    S: { type: Number},
+    M: { type: Number},
+    L: { type: Number },
+    XL: { type: Number},
+    XXL: { type: Number},
   },
   {
     timestamps: true,

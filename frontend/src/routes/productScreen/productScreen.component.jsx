@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -9,6 +9,7 @@ import {
   Card,
   ListGroupItem,
   Button,
+  Form
 } from 'react-bootstrap'
 import Rating from '../../components/rating/rating.component'
 import { listProductDetails } from '../../actions/productActions'
@@ -16,6 +17,7 @@ import Loader from '../../components/loader/loader.component'
 import Message from '../../components/message/message.component'
 
 const ProductScreen = () => {
+  const [qty, setQty] = useState(0)
   const dispatch = useDispatch()
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, product, error } = productDetails
@@ -24,7 +26,7 @@ const ProductScreen = () => {
   useEffect(() => {
     dispatch(listProductDetails(params.id))
   }, [dispatch, params])
-
+console.log(product)
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>
@@ -73,6 +75,28 @@ const ProductScreen = () => {
                     </Col>
                   </Row>
                 </ListGroupItem>
+                {/* {product.countInStock > 0 && (
+                  <ListGroupItem>
+                    <Row>
+                      <Col>QTY</Col>
+                      <Col>
+                        <Form.Control
+                          as='select'
+                          value={qty}
+                          onChange={(e) => setQty(e.target.value)}
+                        >
+                          {
+                          [...Array(product.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                              {x + 1}
+                            </option>
+                          ))
+                          }
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroupItem>
+                )} */}
                 <ListGroupItem>
                   <Button
                     className='btn-block'
