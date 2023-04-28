@@ -9,7 +9,7 @@ import {
   Card,
   ListGroupItem,
   Button,
-  Form
+  Form,
 } from 'react-bootstrap'
 import Rating from '../../components/rating/rating.component'
 import { listProductDetails } from '../../actions/productActions'
@@ -26,6 +26,8 @@ const ProductScreen = () => {
   useEffect(() => {
     dispatch(listProductDetails(params.id))
   }, [dispatch, params])
+
+  console.log(product)
 
   return (
     <>
@@ -67,14 +69,26 @@ const ProductScreen = () => {
                     </Col>
                   </Row>
                 </ListGroupItem>
-                                <ListGroupItem>
-                  <Row>
-                    <Col>Size</Col>
-                    <Col>
-                      {product.countInStockS}
-                    </Col>
-                  </Row>
-                </ListGroupItem>
+                {product.countInStock && (
+                  <ListGroupItem>
+                    <Row>
+                      <Col>Size</Col>
+                      <Col>
+                        <Form.Control
+                          as='select'
+                          value={qty}
+                          onChange={(e) => setQty(e.target.value)}
+                        >
+                          {product.countInStock.map((product) =>
+                            product.quantity > 0 && (
+                              <option key={product._id}>{product.size}</option>
+                            ) 
+                          )}
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroupItem>
+                )}
                 {/* <ListGroupItem>
                   <Row>
                     <Col>Status</Col>
@@ -105,15 +119,16 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroupItem>
                 )} */}
-                <ListGroupItem>
+                {product.countInStock &&<ListGroupItem>
                   <Button
                     className='btn-block'
                     type='button'
-                    disabled={product.countInStock === 0}
+                    disabled={product.countInStock.quantity === 0}
                   >
                     ADD TO CART
                   </Button>
                 </ListGroupItem>
+}
               </ListGroup>
             </Card>
           </Col>
