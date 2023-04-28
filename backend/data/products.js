@@ -7,11 +7,8 @@ const products = [
     category: 'hats',
     price: 30.0,
     countInStock: [
-      { size: 'S', quantity: 0 },
-      { size: 'M', quantity: 0 },
-      { size: 'L', quantity: 6 },
-      { size: 'XL', quantity: 0 },
-      { size: 'XXL', quantity: 0 },
+      { size: 'One Size', quantity: 6 },
+
     ],
     rating: 4.5,
     numReviews: 2,
@@ -23,11 +20,9 @@ const products = [
     category: 'hats',
     price: 30,
     countInStock: [
-      { size: 'S', quantity: 0 },
-      { size: 'M', quantity: 0 },
-      { size: 'L', quantity: 6 },
-      { size: 'XL', quantity: 0 },
-      { size: 'XXL', quantity: 0 },
+
+      { size: 'One Size', quantity: 6 },
+
     ],
     rating: 4.0,
     numReviews: 1,
