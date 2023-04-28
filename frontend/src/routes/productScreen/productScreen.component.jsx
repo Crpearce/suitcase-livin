@@ -18,6 +18,8 @@ import Message from '../../components/message/message.component'
 
 const ProductScreen = () => {
   const [qty, setQty] = useState(0)
+  const [size, setSize] = useState('')
+
   const dispatch = useDispatch()
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, product, error } = productDetails
@@ -27,8 +29,9 @@ const ProductScreen = () => {
     dispatch(listProductDetails(params.id))
   }, [dispatch, params])
 
-  console.log(product)
+  useEffect(() => {}, [])
 
+  console.log(size)
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>
@@ -76,27 +79,25 @@ const ProductScreen = () => {
                       <Col>
                         <Form.Control
                           as='select'
-                          value={qty}
-                          onChange={(e) => setQty(e.target.value)}
+                          value={size}
+                          onChange={(e) => {
+                            setSize(e.target.value)
+                          }}
                         >
-                          {product.countInStock.map((product) =>
-                            product.quantity > 0 && (
-                              <option key={product._id}>{product.size}</option>
-                            ) 
+                          <option hidden >select size</option>
+                          {product.countInStock.map(
+                            (product) =>
+                              product.quantity > 0 && (
+                                <option key={product._id}>
+                                  {product.size}
+                                </option>
+                              )
                           )}
                         </Form.Control>
                       </Col>
                     </Row>
                   </ListGroupItem>
                 )}
-                {/* <ListGroupItem>
-                  <Row>
-                    <Col>Status</Col>
-                    <Col>
-                      {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
-                    </Col>
-                  </Row>
-                </ListGroupItem> */}
                 {/* {product.countInStock > 0 && (
                   <ListGroupItem>
                     <Row>
@@ -119,16 +120,17 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroupItem>
                 )} */}
-                {product.countInStock &&<ListGroupItem>
-                  <Button
-                    className='btn-block'
-                    type='button'
-                    disabled={product.countInStock.quantity === 0}
-                  >
-                    ADD TO CART
-                  </Button>
-                </ListGroupItem>
-}
+                {product.countInStock && (
+                  <ListGroupItem>
+                    <Button
+                      className='btn-block'
+                      type='button'
+                      disabled={product.countInStock.quantity === 0}
+                    >
+                      ADD TO CART
+                    </Button>
+                  </ListGroupItem>
+                )}
               </ListGroup>
             </Card>
           </Col>
