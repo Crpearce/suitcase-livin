@@ -19,6 +19,7 @@ import Message from '../../components/message/message.component'
 const ProductScreen = () => {
   const [qty, setQty] = useState(0)
   const [size, setSize] = useState('')
+  const [inventory, setInventory] = useState([])
 
   const dispatch = useDispatch()
   const productDetails = useSelector((state) => state.productDetails)
@@ -29,7 +30,23 @@ const ProductScreen = () => {
     dispatch(listProductDetails(params.id))
   }, [dispatch, params])
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    const findInventory = async () => {
+      const qty = await product.countInStock.find((item) => item.size === size).quantity
+      setQty(qty)
+      for (let i = 0; i < qty; i++) {
+        inventory.push(i + 1)
+      }
+    }
+    findInventory()
+  }, [size])
+
+  const clearQuantity = () => {
+    for (let i = qty; i > 0; i--) {
+      inventory.splice(0, 1)
+    }
+  }
+
 
   console.log(size)
   return (
@@ -82,9 +99,11 @@ const ProductScreen = () => {
                           value={size}
                           onChange={(e) => {
                             setSize(e.target.value)
+                            clearQuantity()
                           }}
                         >
-                          <option hidden >select size</option>
+                          <option hidden>select size</option>
+
                           {product.countInStock.map(
                             (product) =>
                               product.quantity > 0 && (
@@ -98,6 +117,28 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroupItem>
                 )}
+                {product.countInStock && (
+                  <ListGroupItem>
+                    <Row>
+                      <Col>Quantity</Col>
+                      <Col>
+                        <Form.Control
+                          as='select'
+                          onChange={() => {
+                            clearQuantity()
+                          }}
+                        >
+                          <option hidden>select quantity</option>
+                          {inventory.map((item) => (
+                            <option key={`${item.size}`}>{item}</option>
+                          ))}
+                          )
+                        </Form.Control>
+                      </Col>
+                    </Row>
+                  </ListGroupItem>
+                )}
+
                 {/* {product.countInStock > 0 && (
                   <ListGroupItem>
                     <Row>
@@ -106,15 +147,16 @@ const ProductScreen = () => {
                         <Form.Control
                           as='select'
                           value={qty}
-                          onChange={(e) => setQty(e.target.value)}
+                          // onChange={(e) => setQty(e.target.value)}
                         >
-                          {
-                          [...Array(product.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))
-                          }
+                          {product.countInStock.find((x) => {
+                            const selectedProd =
+(
+                                <option key={x + 1} value={x + 1}>
+                                  {selectedProd.quantity}
+                                </option>
+                              )
+                          })}
                         </Form.Control>
                       </Col>
                     </Row>
