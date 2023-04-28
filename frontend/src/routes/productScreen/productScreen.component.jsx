@@ -47,6 +47,8 @@ const ProductScreen = () => {
     }
   }
 
+
+  console.log(size)
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>
@@ -101,6 +103,7 @@ const ProductScreen = () => {
                           }}
                         >
                           <option hidden>select size</option>
+
                           {product.countInStock.map(
                             (product) =>
                               product.quantity > 0 && (
@@ -135,6 +138,7 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroupItem>
                 )}
+
                 {/* {product.countInStock > 0 && (
                   <ListGroupItem>
                     <Row>
