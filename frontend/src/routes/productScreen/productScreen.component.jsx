@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   Row,
@@ -25,6 +25,7 @@ const ProductScreen = () => {
   const productDetails = useSelector((state) => state.productDetails)
   const { loading, error, product } = productDetails
   const params = useParams()
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(listProductDetails(params.id))
@@ -35,13 +36,18 @@ const ProductScreen = () => {
       console.log('product useEffect', product)
       const qty = await product.countInStock?.find((item) => item.size === size)
         .quantity
+        console.log('qty:', qty)
       setQty(qty)
       for (let i = 0; i < qty; i++) {
         inventory.push(i + 1)
       }
     }
     findInventory()
-  }, [size, inventory, product])
+  }, [size])
+
+  const addToCartHandler = () => {
+    navigate(`/cart/${params.id}?qty=${qty}`)
+  }
 
   const clearQuantity = () => {
     for (let i = qty; i > 0; i--) {
@@ -142,7 +148,8 @@ const ProductScreen = () => {
                     <Button
                       className='btn-block'
                       type='button'
-                      disabled={product.countInStock.quantity === 0}
+                      disabled={qty === 0}
+                      onClick={addToCartHandler}
                     >
                       ADD TO CART
                     </Button>
