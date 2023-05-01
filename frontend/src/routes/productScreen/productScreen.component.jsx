@@ -23,7 +23,7 @@ const ProductScreen = () => {
 
   const dispatch = useDispatch()
   const productDetails = useSelector((state) => state.productDetails)
-  const { loading, product, error } = productDetails
+  const { loading, error, product } = productDetails
   const params = useParams()
 
   useEffect(() => {
@@ -32,14 +32,16 @@ const ProductScreen = () => {
 
   useEffect(() => {
     const findInventory = async () => {
-      const qty = await product.countInStock.find((item) => item.size === size).quantity
+      console.log('product useEffect', product)
+      const qty = await product.countInStock?.find((item) => item.size === size)
+        .quantity
       setQty(qty)
       for (let i = 0; i < qty; i++) {
         inventory.push(i + 1)
       }
     }
     findInventory()
-  }, [size])
+  }, [size, inventory])
 
   const clearQuantity = () => {
     for (let i = qty; i > 0; i--) {
@@ -47,11 +49,11 @@ const ProductScreen = () => {
     }
   }
 
-
-  console.log(size)
+  console.log('inventory:', inventory)
+  console.log('product below:', product)
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
+      <Link className='btn btn-light my-3' to='/' onClick={clearQuantity}>
         Go Back
       </Link>
       {loading ? (
@@ -103,13 +105,10 @@ const ProductScreen = () => {
                           }}
                         >
                           <option hidden>select size</option>
-
                           {product.countInStock.map(
-                            (product) =>
-                              product.quantity > 0 && (
-                                <option key={product._id}>
-                                  {product.size}
-                                </option>
+                            (x) =>
+                              x.quantity > 0 && (
+                                <option key={x._id}>{x.size}</option>
                               )
                           )}
                         </Form.Control>
@@ -130,7 +129,7 @@ const ProductScreen = () => {
                         >
                           <option hidden>select quantity</option>
                           {inventory.map((item) => (
-                            <option key={`${item.size}`}>{item}</option>
+                            <option key={item}>{item}</option>
                           ))}
                           )
                         </Form.Control>
@@ -138,30 +137,6 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroupItem>
                 )}
-
-                {/* {product.countInStock > 0 && (
-                  <ListGroupItem>
-                    <Row>
-                      <Col>QTY</Col>
-                      <Col>
-                        <Form.Control
-                          as='select'
-                          value={qty}
-                          // onChange={(e) => setQty(e.target.value)}
-                        >
-                          {product.countInStock.find((x) => {
-                            const selectedProd =
-(
-                                <option key={x + 1} value={x + 1}>
-                                  {selectedProd.quantity}
-                                </option>
-                              )
-                          })}
-                        </Form.Control>
-                      </Col>
-                    </Row>
-                  </ListGroupItem>
-                )} */}
                 {product.countInStock && (
                   <ListGroupItem>
                     <Button
