@@ -41,7 +41,7 @@ const ProductScreen = () => {
       }
     }
     findInventory()
-  }, [size, inventory])
+  }, [size, inventory, product])
 
   const clearQuantity = () => {
     for (let i = qty; i > 0; i--) {
