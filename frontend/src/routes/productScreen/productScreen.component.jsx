@@ -17,7 +17,7 @@ import Loader from '../../components/loader/loader.component'
 import Message from '../../components/message/message.component'
 
 const ProductScreen = () => {
-  const [qty, setQty] = useState(0)
+  const [qty, setQty] = useState(1)
   const [size, setSize] = useState('')
   const [inventory, setInventory] = useState([])
 
@@ -83,7 +83,7 @@ const ProductScreen = () => {
                 />
               </ListGroupItem>
               <ListGroupItem>Price: ${product.price}</ListGroupItem>
-              <ListGroupItem>Description: ${product.description}</ListGroupItem>
+              <ListGroupItem>Description: {product.description}</ListGroupItem>
             </ListGroup>
           </Col>
           <Col md={3}>
