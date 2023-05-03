@@ -33,10 +33,8 @@ const ProductScreen = () => {
 
   useEffect(() => {
     const findInventory = async () => {
-      console.log('product useEffect', product)
       const qty = await product.countInStock?.find((item) => item.size === size)
         .quantity
-        console.log('qty:', qty)
       setQty(qty)
       for (let i = 0; i < qty; i++) {
         inventory.push(i + 1)
@@ -46,6 +44,7 @@ const ProductScreen = () => {
   }, [size])
 
   const addToCartHandler = () => {
+    localStorage.setItem('itemSize', size)
     navigate(`/cart/${params.id}?qty=${qty}`)
   }
 
@@ -55,8 +54,6 @@ const ProductScreen = () => {
     }
   }
 
-  console.log('inventory:', inventory)
-  console.log('product below:', product)
   return (
     <>
       <Link className='btn btn-light my-3' to='/' onClick={clearQuantity}>
